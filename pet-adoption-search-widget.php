@@ -63,17 +63,20 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 
 		// Adapted from http://www.adoptapet.com/public/searchtools/
 		// In future versions we could allow some customization to match the theme.
-		?>
-
-		<div class="pet_adoption_search_widget_main" style="text-align: center;">
+		echo '<div class="pet_adoption_search_widget_main" style="text-align: center;">
 			<iframe width="150" height="240" frameborder="0" marginwidth="0" marginheight="0" scrolling="0"
-			        src="http://searchtools.adoptapet.com/public/searchtools/display/150x240"></iframe>
-				<div class="pet_adoption_search_widget_credit" style="font-size: x-small;">Pet adoption and rescue <br />powered by
-					<a href="http://www.adoptapet.com/" title="Pet adoption and rescue powered by Adopt-a-Pet.com">Adopt-a-Pet.com</a>
-				</div>
-		</div>
+			        src="http://searchtools.adoptapet.com/public/searchtools/display/150x240"></iframe>';
 
-		<?php
+		// Show credit link
+		if ( $instance['show_credit_p'] ) {
+
+			echo '<div class="pet_adoption_search_widget_credit" style="font-size: x-small;">Pet adoption and rescue <br/>powered by
+				<a href="http://www.adoptapet.com/" title="Pet adoption and rescue powered by Adopt-a-Pet.com">Adopt-a-Pet.com</a>
+			</div>';
+
+		}
+
+		echo '</div>';
 
 		echo $after_widget;
 	}
@@ -91,6 +94,7 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['show_credit_p'] = !empty($new_instance['show_credit_p']) ? 1 : 0;
 
 		return $instance;
 
@@ -110,12 +114,19 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 		} else {
 			$title = __( 'Search for an Adoptable Pet', 'pet_adoption_search_widget_domain' );
 		}
+		// Should we show the credit link to Adopt-a-Pet.com? (Must be opt-in per WordPress.org guidelines.)
+		$show_credit_p = isset( $instance['show_credit_p'] ) ? (bool) $instance['show_credit_p'] : false;
+
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
 			       name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"
 			       value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<p>
+			<input class="checkbox" type="checkbox" <?php checked( $show_credit_p ); ?> id="<?php echo $this->get_field_id( 'show_credit_p' ); ?>" name="<?php echo $this->get_field_name( 'show_credit_p' ); ?>" />
+			<label for="<?php echo $this->get_field_id( 'show_credit_p' ); ?>"><?php _e( 'Include credit link to Adopt-a-Pet.com?' ); ?></label>
 		</p>
 	<?php
 
