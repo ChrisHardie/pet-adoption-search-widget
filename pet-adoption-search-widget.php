@@ -4,7 +4,7 @@
 Plugin Name: Pet Adoption Search Widget
 Plugin URI:
 Description: Display an Adopt-a-Pet.com pet adoption search form in a widget
-Version: 1.0
+Version: 1.1
 Author: Chris Hardie
 Author URI: http://www.chrishardie.com/
 License: GPL2
@@ -134,18 +134,8 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 
 }
 
-class JCH_PetAdoptionSearchWidget {
-	function __construct() {
-		add_action( 'init', array( $this, 'init' ), 1 );
-	}
-
-	public function init() {
-		register_widget( 'Pet_Adoption_Search_Widget' );
-	}
-
-
-}
-
-$jch_pet_adoption_search_widget = new JCH_PetAdoptionSearchWidget();
+add_action('widgets_init', function() {
+	register_widget( 'Pet_Adoption_Search_Widget' );
+});
 
 ?>
