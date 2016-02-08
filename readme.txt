@@ -30,6 +30,7 @@ Want to help make this plugin better? <a href="https://github.com/ChrisHardie/pe
 = 1.1 =
 
 * Update widget registration to work with recent versions of WordPress
+* Code formatting and logic updates to adhere to WordPress coding standards
 
 = 1.0 =
 
