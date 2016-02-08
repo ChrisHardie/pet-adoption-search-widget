@@ -27,7 +27,7 @@ License: GPL2
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-defined('ABSPATH') or die("Please don't try to run this file directly.");
+defined( 'ABSPATH' ) or die( "Please don't try to run this file directly." );
 
 class Pet_Adoption_Search_Widget extends WP_Widget {
 	/**
@@ -50,15 +50,13 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	function widget( $args, $instance ) {
-		extract( $args, EXTR_SKIP );
-		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		// Output the widget content
-		echo $before_widget;
+		echo $args['before_widget'];
 
 		// Title
-		if ( !empty( $title ) ) {
-			echo $before_title . $title . $after_title;
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 
 		// Adapted from http://www.adoptapet.com/public/searchtools/
@@ -78,7 +76,7 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 
 		echo '</div>';
 
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 
 	/**
@@ -94,7 +92,7 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['show_credit_p'] = !empty($new_instance['show_credit_p']) ? 1 : 0;
+		$instance['show_credit_p'] = ! empty( $new_instance['show_credit_p'] ) ? 1 : 0;
 
 		return $instance;
 
@@ -119,14 +117,17 @@ class Pet_Adoption_Search_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>"
-			       name="<?php echo $this->get_field_name( 'title' ); ?>" type="text"
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+			       name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
 			       value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $show_credit_p ); ?> id="<?php echo $this->get_field_id( 'show_credit_p' ); ?>" name="<?php echo $this->get_field_name( 'show_credit_p' ); ?>" />
-			<label for="<?php echo $this->get_field_id( 'show_credit_p' ); ?>"><?php _e( 'Include credit link to Adopt-a-Pet.com?' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( $show_credit_p ); ?>
+			       id="<?php echo esc_attr( $this->get_field_id( 'show_credit_p' ) ); ?>"
+			       name="<?php echo esc_attr( $this->get_field_name( 'show_credit_p' ) ); ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_credit_p' ) ); ?>">
+				<?php _e( 'Include credit link to Adopt-a-Pet.com?' ); ?></label>
 		</p>
 	<?php
 
