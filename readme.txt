@@ -29,6 +29,10 @@ Want to help make this plugin better? <a href="https://github.com/ChrisHardie/pe
 
 == Changelog ==
 
+= 1.2.1 =
+
+* Fix: Display issue with widget iframe in Twenty Twenty core theme
+
 = 1.2 =
 
 * Improvement: use SSL version of search iframe
