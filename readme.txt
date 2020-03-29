@@ -2,8 +2,8 @@
 Contributors: chrishardie
 Tags: adoptable pets,adoption,pets,animals
 Requires at least: 2.8
-Tested up to: 5.3
-Version: 1.2
+Tested up to: 5.4
+Version: 1.2.1
 Stable tag: trunk
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl.html
