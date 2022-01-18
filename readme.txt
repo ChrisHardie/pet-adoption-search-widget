@@ -1,6 +1,6 @@
 === Pet Adoption Search Widget ===
 Contributors: chrishardie
-Tags: adoptable pets,adoption,pets,animals
+Tags: adoptable pets,adoption,pets,animals,adopt-me
 Requires at least: 2.8
 Tested up to: 5.8
 Version: 1.2.1
@@ -11,6 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Display an Adopt-a-Pet.com pet adoption search form in a widget.
 
 == Description ==
+
+**NO LONGER SUPPORTED**: This plugin is no longer actively maintained or supported, and may be closed soon. [Read the announcement](https://tech.chrishardie.com/2022/ending-support-wordpress-plugins/).
+
 This plugin creates a widget that will display pet adoption search form powered by Adopt-a-Pet.com.
 
 Visitors to your site can choose what kind of pet to search for, enter their U.S. zipcode or Canadian postal code, and go search for adoptable pets near them. The search results will open in a new browser window or tab on the Adopt-a-Pet.com website.
